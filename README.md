@@ -1,27 +1,27 @@
-# FlightsApp
+# FLights App
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.0.4.
+This project is a web application developed with Angular.
 
-## Development server
+## Requirements
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- Node.js (version 20.1.0 recommended)
 
-## Code scaffolding
+## Installation
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+1. Clone this repository to your local machine.
 
-## Build
+2. Open a terminal in the root folder of the project.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+3. Run the following command to install the dependencies:
 
-## Running unit tests
+   ```bash
+   npm install
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Usage
 
-## Running end-to-end tests
+1. After the dependencies are installed, you can start the development server by running the following command:.
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+    ```bash
+    npm start
 
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+2. Open your web browser and visit <http://localhost:4200/>  to see the application in action.

@@ -1,0 +1,52 @@
+.journey-card {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.flight-card {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 5px;
+}
+
+.flight-card:last-child {
+  margin-bottom: 0;
+}
+
+/* Flechas */
+.journey-card::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: -10px;
+  width: 0;
+  height: 0;
+  border-top: 6px solid transparent;
+  border-bottom: 6px solid transparent;
+  border-right: 6px solid #ccc;
+  transform: translateY(-50%);
+}
+.journey-info {
+  display: inline-block;
+  margin-right: 10px; /* Ajusta el margen derecho según sea necesario */
+}
+
+.flight-card::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: -10px;
+  width: 0;
+  height: 0;
+  border-top: 6px solid transparent;
+  border-bottom: 6px solid transparent;
+  border-right: 6px solid #ccc;
+  transform: translateY(-50%);
+}
+
+.flight-card:last-child::before {
+  display: none;
+}

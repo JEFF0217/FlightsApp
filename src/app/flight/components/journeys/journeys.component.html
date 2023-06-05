@@ -1,0 +1,84 @@
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <form [formGroup]="searchForm" (ngSubmit)="searchFlights()" class="text-center">
+                <div class="form-row">
+                    <div class="form-group col-md-12">
+                        <label for="origin">Origin</label>
+                        <input type="text" class="form-control" id="origin" formControlName="origin" required
+                            (input)="onInputChange($event, 'origin')">
+                        <div *ngIf="isFieldInvalid('origin')" class="text-danger">
+                            <div *ngIf="getFieldErrors('origin')?.['required']">Origin is required.</div>
+                            <div *ngIf="getFieldErrors('origin')?.['maxlength']">Origin should be a maximum of 3
+                                characters.
+                            </div>
+                            <div *ngIf="getFieldErrors('origin')?.['pattern']">Origin should consist of 3 uppercase
+                                letters.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-12">
+                        <label for="destination">Destination</label>
+                        <input type="text" class="form-control" id="destination" formControlName="destination" required
+                            (input)="onInputChange($event, 'destination')">
+                        <div *ngIf="isFieldInvalid('destination')" class="text-danger">
+                            <div *ngIf="getFieldErrors('destination')?.['required']">Destination is required.</div>
+                            <div *ngIf="getFieldErrors('destination')?.['maxlength']">Destination should be a maximum of
+                                3
+                                characters.</div>
+                            <div *ngIf="getFieldErrors('destination')?.['pattern']">Destination should consist of 3
+                                uppercase letters.</div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="text-center mt-2">
+                    <button type="submit" class="btn btn-primary">Search Flights</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div *ngIf="journeys.length > 0" class="form-group col-md-3">
+        <label for="currency">Currency</label>
+        <select class="form-control" id="currency" [(ngModel)]="selectedCurrency">
+            <option value="USD">USD</option>
+            <option value="EUR">EUR</option>
+            <option value="COP">COP</option>
+        </select>
+    </div>
+    <div *ngFor="let journey of journeys">
+        <div class="container">
+            <div class="row mt-2 justify-content-center">
+                <div class="col-md-12">
+                    <div class="journey-card bg-secondary text-white">
+                        <h3 class="text-center">
+                            <span class="journey-info">
+                                {{ journey.origin }}
+                            </span>
+                            <span class="journey-info">
+                                <i class="fas fa-arrow-right"></i> {{ journey.destination }}
+                            </span>
+                            <span class="journey-info">Price: {{ convertPrice(journey.price, selectedCurrency) }}</span>
+                        </h3>
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-md-3" *ngFor="let flight of journey.flights">
+                            <div class="flight-card bg-light d-flex flex-column align-items-center">
+                                <p>{{ flight.origin }} <i class="fas fa-arrow-right"></i> {{ flight.destination }}</p>
+                                <p>Flight Carrier: {{ flight.transport?.flightCarrier }}</p>
+                                <p>Flight Number: {{ flight.transport?.flightNumber }}</p>
+                                <p><b>Price: {{ convertPrice(flight.price, selectedCurrency) }}</b></p>
+                                <div class="mt-auto">
+                                    <i class="fas fa-plane"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
